@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 module "sqs" {
-  source = "../../" # module root
+  source = "github.com/intervision/terraform-aws-sqs-module?ref=1.0.0"
 
   queue_name                 = "example-queue"
   message_retention_days     = 7

@@ -17,7 +17,7 @@ A generic, reusable Terraform module to create and manage AWS SQS queues with op
 ## Usage
 ```hcl
 module "queue" {
-  source = "../.." # or registry path when published
+  source = "github.com/intervision/terraform-aws-sqs-module?ref=1.0.0"
 
   queue_name                  = "my-queue"
   message_retention_days      = 14
