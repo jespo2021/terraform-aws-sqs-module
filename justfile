@@ -141,7 +141,7 @@ test-github-latest:
         echo '}' >> main.tf && \
         echo 'provider "aws" { region = "us-east-1" }' >> main.tf && \
         echo 'module "test" {' >> main.tf && \
-        echo '  source = "github.com/intervision/terraform-aws-sqs-module?ref=main"' >> main.tf && \
+        echo '  source = "github.com/InterVision/terraform-aws-sqs-module?ref=main"' >> main.tf && \
         echo '  queue_name = "test-queue"' >> main.tf && \
         echo '}' >> main.tf && \
         terraform init && terraform validate
@@ -160,7 +160,7 @@ test-github-version version:
         echo '}' >> main.tf && \
         echo 'provider "aws" { region = "us-east-1" }' >> main.tf && \
         echo 'module "test" {' >> main.tf && \
-        echo '  source = "github.com/intervision/terraform-aws-sqs-module?ref={{version}}"' >> main.tf && \
+        echo '  source = "github.com/InterVision/terraform-aws-sqs-module?ref={{version}}"' >> main.tf && \
         echo '  queue_name = "test-queue"' >> main.tf && \
         echo '}' >> main.tf && \
         terraform init && terraform validate
