@@ -1,0 +1,94 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":separatePatchReleases"
+  ],
+  "labels": ["dependencies"],
+  "assignees": ["@jespo2021"],
+  "reviewers": ["@jespo2021"],
+  "timezone": "America/New_York",
+  "schedule": ["before 10am on monday"],
+  "prConcurrentLimit": 3,
+  "prHourlyLimit": 2,
+  "packageRules": [
+    {
+      "description": "Terraform version updates",
+      "matchManagers": ["terraform-version"],
+      "matchPackageNames": ["hashicorp/terraform"],
+      "groupName": "Terraform",
+      "major": {
+        "enabled": false
+      },
+      "minor": {
+        "enabled": true,
+        "automerge": false
+      },
+      "patch": {
+        "enabled": true,
+        "automerge": true
+      }
+    },
+    {
+      "description": "Terraform AWS provider updates",
+      "matchManagers": ["terraform"],
+      "matchPackageNames": ["hashicorp/aws"],
+      "groupName": "AWS Provider",
+      "major": {
+        "enabled": false
+      },
+      "minor": {
+        "enabled": true,
+        "automerge": false
+      },
+      "patch": {
+        "enabled": true,
+        "automerge": true
+      }
+    },
+    {
+      "description": "GitHub Actions updates",
+      "matchManagers": ["github-actions"],
+      "groupName": "GitHub Actions",
+      "pinDigests": true,
+      "major": {
+        "enabled": true,
+        "automerge": false
+      },
+      "minor": {
+        "enabled": true,
+        "automerge": true
+      },
+      "patch": {
+        "enabled": true,
+        "automerge": true
+      }
+    }
+  ],
+  "terraform": {
+    "enabled": true
+  },
+  "terraform-version": {
+    "enabled": true
+  },
+  "github-actions": {
+    "enabled": true,
+    "pinDigests": true
+  },
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "to {{newVersion}}",
+  "commitMessageSuffix": "",
+  "prTitle": "chore(deps): update {{depName}} to {{newVersion}}",
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security", "dependencies"],
+    "assignees": ["@jespo2021"],
+    "reviewers": ["@jespo2021"]
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on monday"]
+  }
+}
